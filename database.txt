@@ -1,0 +1,66 @@
+-- Tạo mới CSDL
+CREATE DATABASE dbbandienthoai;
+USE dbbandienthoai;
+
+-- Bảng Users (Chứa User bình thường và Admin)
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    Password VARCHAR(255) NOT NULL, -- Cần mã hóa trước khi lưu
+    Phone VARCHAR(20) UNIQUE NOT NULL,
+    Role ENUM('Member', 'Admin') NOT NULL DEFAULT 'Member',
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Chèn tài khoản Admin mặc định với mật khẩu đã mã hóa (MD5)
+INSERT INTO Users (Username, Password, Phone, Role) 
+VALUES ('admin', MD5('123456'), '0123456789', 'Admin');
+
+-- Bảng Products (Sản phẩm)
+CREATE TABLE Products (
+    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Color VARCHAR(50),
+    Price DECIMAL(10,2) NOT NULL,
+    Stock INT DEFAULT 0,
+    Image VARCHAR(255),
+    Category VARCHAR(100) DEFAULT 'Uncategorized',
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Bảng Cart (Giỏ hàng)
+CREATE TABLE Cart (
+    CartID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    ProductID INT,
+    Quantity INT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON DELETE CASCADE,
+    CONSTRAINT unique_cart UNIQUE (UserID, ProductID) -- Tránh trùng sản phẩm
+);
+
+-- Bảng Orders (Đơn hàng)
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    TotalAmount DECIMAL(10,2) NOT NULL,
+    PaymentMethod ENUM('Tiền mặt khi nhận hàng', 'Online') DEFAULT 'Tiền mặt khi nhận hàng',
+    OrderStatus ENUM('Pending', 'Processing', 'Completed', 'Canceled') DEFAULT 'Pending',
+    SaleDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FullName VARCHAR(255) NOT NULL,
+    Phone VARCHAR(20) NOT NULL,
+    Address TEXT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE
+);
+
+-- Bảng OrderDetails (Chi tiết đơn hàng)
+CREATE TABLE OrderDetails (
+    OrderDetailID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON DELETE CASCADE
+);
+

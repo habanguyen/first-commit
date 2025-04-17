@@ -1,0 +1,42 @@
+Xây dựng khung dự án 
+
+- Frontend
+- Admin
+- Csdl
+
+Frontend:
+  - Trang chủ (index.php)
+  - Trang danh sách / danh mục sản phẩm (category.php)
+  - Trang giỏ hàng (detail.php)
+  - Trang check out (checkout.php)
+  - Trang thanh toán (complete.php)
+  - Trang liên hệ (contact.php)
+
+admin :
+  - Tài khoản người dùng :
+    Ql role (admin , user)
+    Ql người dùng : admin/user
+      Hiển thị chức năng : thêm/sửa/xoá
+      Đăng ký tài khoản
+      Đăng nhập
+  - Quản lý sản phẩm 
+  - Quản lý đơn hàng
+      Hiển thị danh sách đơn hàng
+  - Quản lý phản hồi
+
+  - authen/... (trang đăng ký / đăng nhập )
+  - user/... (trang người dùng > thêm > sửa > xoá tt)
+  - category/... (trang danh mục sản phẩm )
+  - product/... 
+  - order/...
+  - feedback/...
+  index.php->
+
+  database 
+    - config.php -> cấu hình Csdl
+    - dbhelper.php -> chứa các function dùng chung cho cả dự án.
+  utils
+    - utility.php -> chứa các hàm tiện ích cho cả dự án. 
+
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Member'): ?>
+                    <?php endif; ?>
