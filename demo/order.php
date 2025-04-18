@@ -48,7 +48,6 @@ try {
                     <?php if ($_SESSION['role'] === 'Member'): ?>
                         <li><a href="order.php"><i class="fa-solid fa-cart-shopping"></i> Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="product.php"><i class="fa-brands fa-product-hunt"></i> Sản phẩm</a></li>
                     <li><a href="login.php"><i class="fa-regular fa-user"></i> Người dùng</a></li>
                     <?php if ($_SESSION['role'] === 'Admin'): ?>
                         <li><a href="addproduct.php">Thêm sản phẩm</a></li>

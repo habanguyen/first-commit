@@ -189,6 +189,49 @@ h1 {
     animation-name: fade;
     animation-duration: 1.5s;
 }
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: #026c9b;
+    outline: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #eff1f1;
+    color: #333;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #026c9b;
+    color: white;
+    transform: scale(1.05);
+}
+
 
 @-webkit-keyframes fade {
     from {opacity: .4} 

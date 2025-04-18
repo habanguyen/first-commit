@@ -14,25 +14,26 @@ include_once 'config.php';
 
 <body>
     <div class="container">
+        <div class="top-item">
+            <button><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li></button>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?><button><a href="addproduct.php">Thêm sản phẩm mới</a></button>
+            <?php endif; ?>
+        </div>
         <header>
             <img src="https://th.bing.com/th/id/OIP.Fssk5m6e0R66ejp_qiFi5AHaHa?w=167&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Logo" class="logo">
-            <nav class="menu">
-                <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
-                    <?php endif; ?>
-                    <li><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm mới</a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
+            <form method="GET" action="main.php" class="search-form">
+                <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..."
+                    value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+
+                <button type="submit" class="button">
+                    <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+                </button>
+
+                <a href="order.php" class="button">
+                    <i class="fa-solid fa-cart-shopping"></i> Đặt hàng
+                </a>
+            </form>
         </header>
-        <form method="GET" action="main.php" class="search-form">
-            <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-            <button type="submit">Tìm kiếm</button>
-        </form>
         <h1><i class="fa-brands fa-product-hunt" style="margin-right: 13px;"></i>Danh sách sản phẩm</h1>
         <div class="category-buttons">
             <a href="main.php?category=Điện thoại" class="btn-category">Điện thoại</a>
