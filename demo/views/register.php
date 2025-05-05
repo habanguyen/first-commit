@@ -1,6 +1,6 @@
 <!-- filepath: /c:/xampp/htdocs/20222180-NguyenBaHa/admin/demo/register.php -->
 <?php
-include_once "config.php"; // Kết nối cơ sở dữ liệu
+include_once '../config/config.php'; // Kết nối CSDL
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/demo/assets/css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 

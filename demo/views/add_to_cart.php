@@ -1,7 +1,7 @@
 <?php
 session_start();
 print_r($_POST);
-include_once 'config.php';
+include_once '../config/config.php'; // Kết nối CSDL
 
 // Kiểm tra nếu người dùng đã đăng nhập
 if (!isset($_SESSION['user_id'])) {

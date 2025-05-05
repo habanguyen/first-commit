@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "config.php"; // Kết nối CSDL
+include_once '../config/config.php'; // Kết nối CSDL
 
 // Xử lý đăng nhập nếu có request POST
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
@@ -61,7 +61,7 @@ $loginRequired = !isset($_SESSION["user_id"]);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $loginRequired ? "Đăng Nhập" : "Thông tin cá nhân"; ?></title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/demo/assets/css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 </head>

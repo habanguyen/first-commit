@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config/config.php'; // Kết nối CSDL
 checkAdmin();
 
 $sql = "SELECT p.Name, SUM(od.Quantity) AS TotalSold, SUM(od.Quantity * od.Price) AS TotalRevenue
@@ -29,9 +29,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Doanh thu</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/demo/assets/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="min.css">
 </head>
 
 <body>

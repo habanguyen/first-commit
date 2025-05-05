@@ -1,6 +1,5 @@
 <?php
-require 'db_connection.php'; // Kết nối CSDL
-
+require '../config/config.php'; // Kết nối CSDL
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     if (!isset($_SESSION['UserID'])) {

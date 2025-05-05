@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config/config.php'; // Kết nối CSDL
 checkLogin();
 
 $user_id = $_SESSION['user_id'] ?? null;
@@ -33,7 +33,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/demo/assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
     

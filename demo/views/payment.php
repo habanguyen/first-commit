@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config/config.php'; // Kết nối CSDL
 
 // Kiểm tra nếu user chưa đăng nhập
 if (!isset($_SESSION['user_id'])) {
@@ -56,7 +56,7 @@ if (empty($cartItems)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/demo/assets/css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     >
 </head>

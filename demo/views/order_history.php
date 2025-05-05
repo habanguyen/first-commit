@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config.php"; // Kết nối database
+include_once '../config/config.php'; // Kết nối CSDL
 
 // Kiểm tra nếu user chưa đăng nhập
 if (!isset($_SESSION['user_id'])) {
@@ -23,7 +23,7 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch sử đơn hàng</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/demo/assets/css/main.css">
 </head>
 
 <body>

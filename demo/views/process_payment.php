@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config/config.php'; // Kết nối CSDL
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
