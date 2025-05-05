@@ -1,4 +1,4 @@
-<!-- filepath: /c:/xampp/htdocs/20222180-NguyenBaHa/admin/demo/register.php -->
+<!-- filepath: /c:/xampp/htdocs/20222180-NguyenBaHa/admin/demo/user_register.php -->
 <?php
 include_once '../config/config.php'; // Kết nối CSDL
 
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $username, $password, $phone);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Đăng ký thành công!'); window.location.href='login.php';</script>";
+        echo "<script>alert('Đăng ký thành công!'); window.location.href='user_login.php';</script>";
     } else {
         echo "<script>alert('Lỗi: " . $conn->error . "');</script>";
     }
@@ -36,13 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="https://th.bing.com/th/id/OIP.Fssk5m6e0R66ejp_qiFi5AHaHa?w=167&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Logo" class="logo">
             <nav class="menu">
             <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
+                    <li><a href="home.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
+                        <li><a href="order_process.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
+                    <li><a href="user_login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm mới</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm mới</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>Đăng Ký Tài Khoản</h2>
             </div>
             <div class="login">
-                <form method="POST" action="register.php">
+                <form method="POST" action="user_register.php">
                     <label for="username">Tên đăng nhập:</label><br>
                     <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required><br><br>
 
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
             </div>
             <div class="comment">
-                <label>Bạn đã có tài khoản? <a href="login.php">Đăng nhập</a></label>
+                <label>Bạn đã có tài khoản? <a href="user_login.php">Đăng nhập</a></label>
             </div>
         </div>
     </div>

@@ -20,14 +20,13 @@ echo "Bạn đang đăng nhập với quyền: " . $_SESSION['role'];
             <img src="https://th.bing.com/th/id/OIP.Fssk5m6e0R66ejp_qiFi5AHaHa?w=167&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Logo" class="logo">
             <nav class="menu">
                 <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
+                    <li><a href="home.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
+                        <li><a href="order_process.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="product.php"> <i class="fa-brands fa-product-hunt" style="margin-right: 3px;"></i>Sản phẩm</a></li>
-                    <li><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
+                    <li><a href="user_login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm mới</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm mới</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -77,7 +76,7 @@ echo "Bạn đang đăng nhập với quyền: " . $_SESSION['role'];
         $stmt->bind_param("ssdiss", $productName, $productColor, $productPrice, $productStock, $productImage, $productCategory);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Sản phẩm đã được thêm thành công!'); window.location.href='product.php';</script>";
+            echo "<script>alert('Sản phẩm đã được thêm thành công!'); window.location.href='home.php';</script>";
         } else {
             echo "<script>alert('Lỗi: " . $conn->error . "');</script>";
         }

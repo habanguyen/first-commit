@@ -15,13 +15,13 @@ include_once '../config/config.php'; // Kết nối CSDL
 <body>
     <div class="container">
         <div class="top-item">
-            <button><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li></button>
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?><button><a href="addproduct.php">Thêm sản phẩm mới</a></button>
+            <button><a href="user_login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li></button>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?><button><a href="product_add.php">Thêm sản phẩm mới</a></button>
             <?php endif; ?>
         </div>
         <header>
             <img src="https://th.bing.com/th/id/OIP.Fssk5m6e0R66ejp_qiFi5AHaHa?w=167&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Logo" class="logo">
-            <form method="GET" action="main.php" class="search-form">
+            <form method="GET" action="home.php" class="search-form">
                 <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..."
                     value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
 
@@ -29,17 +29,17 @@ include_once '../config/config.php'; // Kết nối CSDL
                     <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
                 </button>
 
-                <a href="order.php" class="button">
+                <a href="order_process.php" class="button">
                     <i class="fa-solid fa-cart-shopping"></i> Đặt hàng
                 </a>
             </form>
         </header>
         <h1><i class="fa-brands fa-product-hunt" style="margin-right: 13px;"></i>Danh sách sản phẩm</h1>
         <div class="category-buttons">
-            <a href="main.php?category=Điện thoại" class="btn-category">Điện thoại</a>
-            <a href="main.php?category=Linh kiện" class="btn-category">Linh kiện</a>
+            <a href="home.php?category=Điện thoại" class="btn-category">Điện thoại</a>
+            <a href="home.php?category=Linh kiện" class="btn-category">Linh kiện</a>
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-                <a href="revenue.php" class="btn-category">Doanh thu</a>
+                <a href="admin_revenue.php" class="btn-category">Doanh thu</a>
             <?php endif; ?>
         </div>
         <div class="product-grid" id="product-grid">
@@ -63,16 +63,17 @@ include_once '../config/config.php'; // Kết nối CSDL
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="product-card">';
-                    echo '<img src="' . $row["Image"] . '" alt="' . $row["Name"] . '" class="product-image">';
+                    echo '<img src="/demo/assets/img/' . $row["Image"] . '" alt="' . $row["Name"] . '" class="product-image">';
                     echo '<h2 class="product-name">' . $row["Name"] . '</h2>';
                     echo '<p class="product-price">' . number_format($row["Price"], 0, ',', '.') . ' VND</p>';
                     echo '<select class="product-color" id="color-' . $row["ProductID"] . '">';
-                    echo '<option value="' . $row["Color"] . '">' . $row["Color"] . '</option>';
+                    echo '<option value="' . $row["
+                    Color"] . '">' . $row["Color"] . '</option>';
                     echo '</select>';
 
                     if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin') {
-                        echo '<a href="product.php?action=edit&id=' . $row["ProductID"] . '" class="btn-edit">Sửa</a>';
-                        echo '<a href="product.php?action=delete&id=' . $row["ProductID"] . '" class="btn-delete" onclick="return confirm(\'Bạn có chắc chắn muốn xóa sản phẩm này?\')">Xóa</a>';
+                        echo '<a href="home.php?action=edit&id=' . $row["ProductID"] . '" class="btn-edit">Sửa</a>';
+                        echo '<a href="home.php?action=delete&id=' . $row["ProductID"] . '" class="btn-delete" onclick="return confirm(\'Bạn có chắc chắn muốn xóa sản phẩm này?\')">Xóa</a>';
                     } elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'Member') {
                         echo '<button class="btn-buy" onclick="buyNow(' . $row["ProductID"] . ', \'' . $row["Name"] . '\', ' . $row["Price"] . ',\'color-' . $row["ProductID"] . '\')">Mua Ngay</button>';
                         echo '<button class="btn-add-cart" onclick="addToCartAlert(' . $row["ProductID"] . ', \'' . $row["Name"] . '\', ' . $row["Price"] . ',\'color-' . $row["ProductID"] . '\')">Thêm vào giỏ hàng</button>';
@@ -104,7 +105,7 @@ include_once '../config/config.php'; // Kết nối CSDL
         ?>
                 <div class="edit-form">
                     <h2>Sửa sản phẩm</h2>
-                    <form method="POST" action="product.php">
+                    <form method="POST" action="product_add.php">
                         <input type="hidden" name="product-id" value="<?php echo $product['ProductID']; ?>">
                         <label for="product-name">Tên sản phẩm:</label>
                         <input type="text" id="product-name" name="product-name" value="<?php echo $product['Name']; ?>" required>
@@ -138,7 +139,7 @@ include_once '../config/config.php'; // Kết nối CSDL
                 $stmt->bind_param("i", $productId);
 
                 if ($stmt->execute()) {
-                    echo "<script>alert('Sản phẩm đã được xóa thành công!'); window.location.href='product.php';</script>";
+                    echo "<script>alert('Sản phẩm đã được xóa thành công!'); window.location.href='product_add.php';</script>";
                 } else {
                     echo "<script>alert('Lỗi: " . $conn->error . "');</script>";
                 }
@@ -161,7 +162,7 @@ include_once '../config/config.php'; // Kết nối CSDL
             $stmt->bind_param("ssdissi", $productName, $productColor, $productPrice, $productStock, $productImage, $productCategory, $productId);
 
             if ($stmt->execute()) {
-                echo "<script>alert('Sản phẩm đã được cập nhật thành công!'); window.location.href='product.php';</script>";
+                echo "<script>alert('Sản phẩm đã được cập nhật thành công!'); window.location.href='home.php';</script>";
             } else {
                 echo "<script>alert('Lỗi: " . $conn->error . "');</script>";
             }
@@ -176,7 +177,7 @@ include_once '../config/config.php'; // Kết nối CSDL
                 let color = document.getElementById(colorSelectID).value;
 
                 let xhr = new XMLHttpRequest();
-                xhr.open("POST", "add_to_cart.php", true);
+                xhr.open("POST", "cart_add.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -190,11 +191,11 @@ include_once '../config/config.php'; // Kết nối CSDL
                 let color = document.getElementById(colorSelectID).value;
 
                 let xhr = new XMLHttpRequest();
-                xhr.open("POST", "add_to_cart.php", true);
+                xhr.open("POST", "cart_add.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        window.location.href = "order.php"; // Điều hướng đến trang giỏ hàng sau khi mua
+                        window.location.href = "order_process.php"; // Điều hướng đến trang giỏ hàng sau khi mua
                     }
                 };
                 xhr.send("product_id=" + productID + "&color=" + encodeURIComponent(color));

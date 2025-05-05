@@ -3,7 +3,7 @@ include_once '../config/config.php'; // Kết nối CSDL
 
 // Kiểm tra nếu user chưa đăng nhập
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: user_login.php");
     exit();
 }
 
@@ -68,13 +68,13 @@ if (empty($cartItems)) {
                 alt="Logo" class="logo">
             <nav class="menu">
             <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
+                    <li><a href="home.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
+                        <li><a href="order_process.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
+                    <li><a href="user_login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm mới</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm mới</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -108,7 +108,7 @@ if (empty($cartItems)) {
         </div>
 
         <div class="payment-form">
-            <form action="process_payment.php" method="post">
+            <form action="payment_process.php" method="post">
                 <div class="form-group">
                     <label>Thông tin người nhận:</label>
                     <input type="text" name="fullname" value="<?php echo htmlspecialchars($user['FullName']); ?>" required>
@@ -129,7 +129,7 @@ if (empty($cartItems)) {
 
         <div class="edit-info-form">
             <h2>Chỉnh sửa thông tin người nhận</h2>
-            <form action="update_user_info.php" method="post">
+            <form action="user_update_info.php" method="post">
                 <div class="form-group">
                     <label for="edit-fullname">Họ và tên:</label>
                     <input type="text" id="edit-fullname" name="fullname" value="<?php echo htmlspecialchars($user['FullName']); ?>" required>
@@ -233,7 +233,7 @@ if (empty($cartItems)) {
 
                 let formData = new FormData(this);
 
-                fetch("update_user_info.php", {
+                fetch("user_update_info.php", {
                         method: "POST",
                         body: formData
                     })

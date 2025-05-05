@@ -44,13 +44,13 @@ try {
                 alt="Logo" class="logo">
             <nav class="menu">
                 <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars"></i> Trang chủ</a></li>
+                    <li><a href="home.php"><i class="fa-solid fa-bars"></i> Trang chủ</a></li>
                     <?php if ($_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping"></i> Đặt hàng</a></li>
+                        <li><a href="order_process.php"><i class="fa-solid fa-cart-shopping"></i> Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="login.php"><i class="fa-regular fa-user"></i> Người dùng</a></li>
+                    <li><a href="user_login.php"><i class="fa-regular fa-user"></i> Người dùng</a></li>
                     <?php if ($_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -86,7 +86,7 @@ try {
                 </tbody>
             </table>
         </div>
-        <form id="checkoutForm" action="payment.php" method="POST">
+        <form id="checkoutForm" action="checkout.php" method="POST">
             <input type="hidden" name="cart" id="cartData">
             <button type="submit" class="checkout-button">Thanh toán</button>
             <a href="order_history.php">Lịch sử mua hàng</a>

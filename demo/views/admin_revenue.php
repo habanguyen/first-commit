@@ -62,7 +62,7 @@ $conn->close();
         <canvas id="revenueChart"></canvas>
 
         <div class="button-container">
-            <a href="main.php" class="btn">Quay lại trang chủ</a>
+            <a href="home.php" class="btn">Quay lại trang chủ</a>
             <button class="btn" onclick="createFile()">Tạo file</button>
         </div>
     </div>

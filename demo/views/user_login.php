@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
                 // echo "</pre>";
                 // exit();
 
-                header("Location: main.php");
+                header("Location: home.php");
                 exit();
             } else {
                 $error = "Mật khẩu không đúng!";
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 // Đăng xuất
 if (isset($_GET['logout'])) {
     session_destroy();
-    header("Location: login.php");
+    header("Location: user_login.php");
     exit();
 }
 
@@ -73,13 +73,13 @@ $loginRequired = !isset($_SESSION["user_id"]);
                 alt="Logo" class="logo">
             <nav class="menu">
             <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
+                    <li><a href="home.php"><i class="fa-solid fa-bars" style="margin-right: 3px;"></i> Trang chủ</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
+                        <li><a href="order_process.php"><i class="fa-solid fa-cart-shopping" style="margin-right: 3px;"></i>Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
+                    <li><a href="user_login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm mới</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm mới</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -90,7 +90,7 @@ $loginRequired = !isset($_SESSION["user_id"]);
                     <h2>Đăng Nhập</h2>
                 </div>
                 <div class="login">
-                    <form method="POST" action="login.php">
+                    <form method="POST" action="user_login.php">
                         <label for="username">Tên đăng nhập:</label><br>
                         <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required><br><br>
 
@@ -100,14 +100,14 @@ $loginRequired = !isset($_SESSION["user_id"]);
                         <button type="submit" name="login">Đăng Nhập</button>
                     </form>
                     <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
-                    <p class="comment">Bạn chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
+                    <p class="comment">Bạn chưa có tài khoản? <a href="user_register.php">Đăng ký</a></p>
                 <?php else: ?>
                     <div class="header_login">
                         <h2>Thông tin cá nhân</h2>
                     </div>
                     <div class="login">
                         <p><strong>Tên đăng nhập:</strong> <?php echo $_SESSION['username']; ?></p>
-                        <button type="submit" name="login" onclick="window.location.href='login.php?logout=true'">Đăng xuất</button>
+                        <button type="submit" name="login" onclick="window.location.href='user_login.php?logout=true'">Đăng xuất</button>
                     </div>
                 <?php endif; ?>
                 </div>

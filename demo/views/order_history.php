@@ -4,7 +4,7 @@ include_once '../config/config.php'; // Kết nối CSDL
 
 // Kiểm tra nếu user chưa đăng nhập
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: user_login.php");
     exit();
 }
 
@@ -33,14 +33,13 @@ $result = $stmt->get_result();
                 alt="Logo" class="logo">
             <nav class="menu">
                 <ul>
-                    <li><a href="main.php"><i class="fa-solid fa-bars"></i> Trang chủ</a></li>
+                    <li><a href="home.php"><i class="fa-solid fa-bars"></i> Trang chủ</a></li>
                     <?php if ($_SESSION['role'] === 'Member'): ?>
-                        <li><a href="order.php"><i class="fa-solid fa-cart-shopping"></i> Đặt hàng</a></li>
+                        <li><a href="order_process.php"><i class="fa-solid fa-cart-shopping"></i> Đặt hàng</a></li>
                     <?php endif; ?>
-                    <li><a href="product.php"><i class="fa-brands fa-product-hunt"></i> Sản phẩm</a></li>
-                    <li><a href="login.php"><i class="fa-regular fa-user"></i> Người dùng</a></li>
+                    <li><a href="user_login.php"><i class="fa-regular fa-user"></i> Người dùng</a></li>
                     <?php if ($_SESSION['role'] === 'Admin'): ?>
-                        <li><a href="addproduct.php">Thêm sản phẩm</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
