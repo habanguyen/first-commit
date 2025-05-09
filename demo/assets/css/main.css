@@ -135,7 +135,8 @@ h1 {
     text-align: center;
 }
 
-.prev, .next {
+.prev,
+.next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -156,8 +157,9 @@ h1 {
     border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .dot {
@@ -171,6 +173,41 @@ h1 {
     transition: background-color 0.6s ease;
 }
 
+.user-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007BFF;
+    /* Màu xanh dương */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+}
+
+.user-button i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.user-button:hover {
+    transform: scale(1.05);
+    /* Hiệu ứng phóng to nhẹ khi hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-button:active {
+    transform: scale(0.98);
+    /* Hiệu ứng thu nhỏ nhẹ khi nhấn */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 .content {
     padding: 20px;
     background-color: #fff;
@@ -179,7 +216,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
     background-color: #717171;
 }
 
@@ -189,6 +227,7 @@ h1 {
     animation-name: fade;
     animation-duration: 1.5s;
 }
+
 .search-form {
     display: flex;
     justify-content: center;
@@ -234,13 +273,23 @@ h1 {
 
 
 @-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
 }
 
 @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
 }
 
 /* Order Page Styles */
@@ -418,6 +467,7 @@ h1 {
     margin-bottom: 20px;
     border-radius: 4px;
 }
+
 .btn-add-cart {
     background-color: #151614;
     color: #fff;
@@ -433,7 +483,8 @@ h1 {
     background-color: #0056b3;
 }
 
-.btn-edit, .btn-delete {
+.btn-edit,
+.btn-delete {
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -464,7 +515,7 @@ h1 {
     background-color: #cc0000;
     transform: scale(1.05);
 }
-  
+
 
 /* Complete Page Styles */
 .order-summary {
@@ -477,7 +528,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.order-summary th, .order-summary td {
+.order-summary th,
+.order-summary td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
@@ -501,7 +553,9 @@ h1 {
     font-weight: bold;
 }
 
-.payment-form input, .payment-form select, .payment-form textarea {
+.payment-form input,
+.payment-form select,
+.payment-form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -528,6 +582,7 @@ h1 {
 .edit-info-form {
     display: none;
 }
+
 /* Feedback Page Styles */
 .feedback-form {
     background-color: #fff;
@@ -646,7 +701,8 @@ h1 {
     border-radius: 8px;
 }
 
-.login-container, .register-container {
+.login-container,
+.register-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -664,13 +720,15 @@ h1 {
     color: #333;
 }
 
-.login form, .register form {
+.login form,
+.register form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.login label, .register label {
+.login label,
+.register label {
     align-self: flex-start;
     margin-bottom: 5px;
     color: #333;
@@ -698,7 +756,8 @@ h1 {
     margin-right: 5px;
 }
 
-.login button, .register button {
+.login button,
+.register button {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
@@ -709,7 +768,8 @@ h1 {
     font-size: 16px;
 }
 
-.login button:hover, .register button:hover {
+.login button:hover,
+.register button:hover {
     background-color: #0056b3;
 }
 
@@ -725,10 +785,12 @@ h1 {
 .comment a:hover {
     text-decoration: underline;
 }
+
 /* revenue Styles */
 .button-container {
     margin-top: 20px;
 }
+
 .btn {
     display: ruby-text;
     padding: 10px 20px;
@@ -742,6 +804,7 @@ h1 {
     cursor: pointer;
     margin-right: 10px;
 }
+
 .btn:hover {
     background-color: #29b135;
 }

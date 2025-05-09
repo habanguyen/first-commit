@@ -15,7 +15,7 @@ include_once '../config/config.php'; // Kết nối CSDL
 <body>
     <div class="container">
         <div class="top-item">
-            <button><a href="user_login.php"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a></li></button>
+            <a href="user_login.php" class="user-button"><i class="fa-regular fa-user" style="margin-right: 3px;"></i>Người dùng</a>
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?><button><a href="product_add.php">Thêm sản phẩm mới</a></button>
             <?php endif; ?>
         </div>
@@ -200,6 +200,19 @@ include_once '../config/config.php'; // Kết nối CSDL
                 };
                 xhr.send("product_id=" + productID + "&color=" + encodeURIComponent(color));
             }
+            function ChatbotConversion() {
+                const bot = document.getElementById('chatbot-container');
+                if (bot.style.display === 'none' || bot.style.display === '') {
+                    bot.style.display = 'block';
+                } else {
+                    bot.style.display = 'none';
+                }
+            }
+
+            // Khởi đầu: ẩn chatbot
+            window.onload = function() {
+                document.getElementById('chatbot-container').style.display = 'none';
+            }
         </script>
 
         <footer class="footer">
@@ -273,6 +286,19 @@ include_once '../config/config.php'; // Kết nối CSDL
                 </div>
             </div>
         </footer>
+        <!-- Chatbot AI Box -->
+        <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; width: 300px; max-height: 500px; z-index: 1000;">
+            <iframe
+                src="https://www.chatbase.co/chatbot-iframe/YOUR_CHATBOT_ID"
+                title="Chatbot"
+                width="100%"
+                height="100%"
+                style="border: none; border-radius: 10px;">
+            </iframe>
+        </div>
+        <button onclick="ChatbotConversion()" style="position: fixed; bottom: 90px; right: 20px; z-index: 1001; padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 50%;">
+            💬
+        </button>
 </body>
 
 </html>
