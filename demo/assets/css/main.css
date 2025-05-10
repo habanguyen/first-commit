@@ -457,6 +457,18 @@ h1 {
     margin: 10px 0;
 }
 
+.product-color {
+    background-color: #6b7280;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
 .btn-buy {
     background-color: #007BFF;
     color: #fff;
